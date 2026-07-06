@@ -39,7 +39,7 @@ git push -u origin main
    - `EMBEDDING_MODEL`
    - `CORS_ORIGINS` (your Vercel URL, e.g. `https://mindrag.vercel.app`)
 4. Wait for build to complete
-5. Test: `https://YOUR-SPACE.hf.space/health`
+5. Test: `https://woodiee-mindrag.hf.space/health`
 
 ## After deployment
 

@@ -15,14 +15,6 @@ jobs:
             echo "::error::HF_TOKEN secret is missing. GitHub → Settings → Secrets → Actions"
             exit 1
           fi
-          if [ -z "${{ vars.HF_USERNAME }}" ]; then
-            echo "::error::HF_USERNAME variable is missing. GitHub → Settings → Secrets and variables → Actions → Variables → New: HF_USERNAME = your Hugging Face username"
-            exit 1
-          fi
-          if [ -z "${{ vars.HF_SPACE_NAME }}" ]; then
-            echo "::error::HF_SPACE_NAME variable is missing. GitHub → Settings → Variables → New: HF_SPACE_NAME = mindrag-api"
-            exit 1
-          fi
 
       - uses: actions/checkout@v4
         with:
@@ -32,10 +24,7 @@ jobs:
       - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_USERNAME: ${{ vars.HF_USERNAME }}
-          HF_SPACE_NAME: ${{ vars.HF_SPACE_NAME }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          echo "Pushing to spaces/${HF_USERNAME}/${HF_SPACE_NAME}"
-          git push --force "https://${HF_USERNAME}:${HF_TOKEN}@huggingface.co/spaces/${HF_USERNAME}/${HF_SPACE_NAME}" HEAD:main
+          git push --force "https://Woodiee:${HF_TOKEN}@huggingface.co/spaces/Woodiee/MindRAG" HEAD:main
