@@ -22,9 +22,9 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          pip install -U "huggingface_hub[cli]"
-          huggingface-cli login --token "$HF_TOKEN"
-          huggingface-cli upload Woodiee/MindRAG . \
+          pip install -U huggingface_hub
+          hf auth login --token "$HF_TOKEN"
+          hf upload Woodiee/MindRAG . \
             --repo-type space \
             --exclude ".git/*" \
             --exclude ".github/*" \
