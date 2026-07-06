@@ -1,0 +1,18 @@
+{
+  "name": "mindrag",
+  "private": true,
+  "description": "Multilingual mental health RAG chatbot monorepo",
+  "scripts": {
+    "predev": "node scripts/stop-dev.js",
+    "dev": "concurrently -k -n backend,frontend -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "node scripts/run-backend.js",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "start:frontend": "cd frontend && npm run start",
+    "ingest": "cd backend && python scripts/ingest.py --pdf_dir ../data/cleaned",
+    "preprocess": "cd backend && python scripts/preprocess.py"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
