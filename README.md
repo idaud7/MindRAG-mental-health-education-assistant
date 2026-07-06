@@ -1,3 +1,13 @@
+---
+title: MindRAG
+emoji: 🧠
+colorFrom: cyan
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # MindRAG
 
 Professional mental health education assistant with multilingual support (English & Italian).
