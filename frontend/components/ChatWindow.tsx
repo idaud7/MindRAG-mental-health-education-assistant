@@ -58,7 +58,8 @@ export default function ChatWindow() {
     }
 
     pollStatus();
-    const interval = setInterval(pollStatus, 3000);
+    // Poll every 15s — generous for HF Spaces that wake from sleep slowly
+    const interval = setInterval(pollStatus, 15000);
 
     return () => {
       cancelled = true;
@@ -144,12 +145,12 @@ export default function ChatWindow() {
             <p className="font-semibold text-white">MindRAG</p>
             <p className="text-xs text-slate-400">
               {online === false
-                ? "Connecting..."
+                ? "Waking up — may take up to 60s..."
                 : online && !modelReady
-                  ? "Warming up AI model..."
+                  ? "Loading AI model..."
                   : online
                     ? "Online · English & Italiano"
-                    : "Checking connection..."}
+                    : "Starting up..."}
             </p>
           </div>
         </div>

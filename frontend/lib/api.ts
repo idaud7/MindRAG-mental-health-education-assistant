@@ -32,9 +32,10 @@ export async function sendChatMessage(query: string): Promise<ChatResponse> {
   return response.json();
 }
 
+// Generous timeout — free HF Spaces take up to 60s to wake from sleep
 export async function checkHealth(): Promise<boolean> {
   try {
-    const response = await fetchWithTimeout(`${API_URL}/health`, { cache: "no-store" }, 3000);
+    const response = await fetchWithTimeout(`${API_URL}/health`, { cache: "no-store" }, 60000);
     return response.ok;
   } catch {
     return false;
@@ -43,7 +44,7 @@ export async function checkHealth(): Promise<boolean> {
 
 export async function checkReady(): Promise<boolean> {
   try {
-    const response = await fetchWithTimeout(`${API_URL}/ready`, { cache: "no-store" }, 3000);
+    const response = await fetchWithTimeout(`${API_URL}/ready`, { cache: "no-store" }, 10000);
     if (!response.ok) return false;
     const data = await response.json();
     return Boolean(data.ready);
