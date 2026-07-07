@@ -24,10 +24,13 @@ jobs:
         run: |
           pip install -U huggingface_hub
           hf auth login --token "$HF_TOKEN"
+          echo "Uploading README.md with Docker Space config first..."
+          hf upload Woodiee/MindRAG README.md --repo-type space --commit-message "Fix HF Space README metadata"
+          echo "Uploading project files..."
           hf upload Woodiee/MindRAG . \
             --repo-type space \
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude "frontend/node_modules/*" \
             --exclude "backend/.venv/*" \
-            --delete "*"
+            --commit-message "Sync project files from GitHub"

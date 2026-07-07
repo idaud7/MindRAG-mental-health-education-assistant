@@ -6,6 +6,7 @@ colorTo: purple
 sdk: docker
 app_port: 7860
 pinned: false
+short_description: Mental health education assistant API
 ---
 
 # MindRAG
